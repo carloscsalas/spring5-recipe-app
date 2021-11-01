@@ -2,6 +2,8 @@ package guru.springframework.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +35,11 @@ public class Recipe {
     * */
     @Lob
     private Byte[] image;
+
+    /*ORDINAL or STRING, this is important about how it gets persisted in the database.
+    * ORDINAL is the default*/
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
@@ -124,10 +131,27 @@ public class Recipe {
         this.notes = notes;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @Override
     public String toString() {
         return "Recipe{" +
-                "description='" + description + '\'' +
+                "id=" + id +
+                ", description='" + description + '\'' +
                 ", prepTime=" + prepTime +
                 ", cookTime=" + cookTime +
                 ", servings=" + servings +
@@ -135,7 +159,9 @@ public class Recipe {
                 ", url='" + url + '\'' +
                 ", directions='" + directions + '\'' +
                 ", image=" + Arrays.toString(image) +
+                ", difficulty=" + difficulty +
                 ", notes=" + notes +
+                ", ingredients=" + ingredients +
                 '}';
     }
 }
