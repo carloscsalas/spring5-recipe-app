@@ -21,7 +21,7 @@ public class Ingredient {
     /*EAGER, because I'm going to explicitly do that. So we do want that loaded or
     to get it every time from the database. That is the default behavior*/
     @OneToOne(fetch = FetchType.EAGER)
-    private UnitOfMeassure uom;
+    private UnitOfMeasure uom;
 
     /*now we need to set up the inverse side of the relationship, so we don't want to do
     * any type of cascade here because obviosly if we delete an ingrediente, we don't
@@ -42,11 +42,11 @@ public class Ingredient {
         this.id = id;
     }
 
-    public UnitOfMeassure getUom() {
+    public UnitOfMeasure getUom() {
         return uom;
     }
 
-    public void setUom(UnitOfMeassure uom) {
+    public void setUom(UnitOfMeasure uom) {
         this.uom = uom;
     }
 
