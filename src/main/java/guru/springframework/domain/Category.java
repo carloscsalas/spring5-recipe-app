@@ -47,12 +47,5 @@ public class Category {
         this.recipes = recipes;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", recipes=" + recipes +
-                '}';
-    }
+
 }
