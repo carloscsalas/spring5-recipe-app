@@ -30,6 +30,16 @@ public class Ingredient {
     /*a property for the Recipe that he belongs to*/
     private Recipe recipe;
 
+    public Ingredient() {
+    }
+
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
+        this.recipe = recipe;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -70,12 +80,5 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
-    @Override
-    public String toString() {
-        return "Ingredient{" +
-                "description='" + description + '\'' +
-                ", amount=" + amount +
-                ", recipe=" + recipe +
-                '}';
-    }
+
 }
