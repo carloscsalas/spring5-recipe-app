@@ -140,8 +140,12 @@ public class Recipe {
         return notes;
     }
 
+    /*I added into the setNotes() and we're going to pass in a Notes object. here is where we set
+    * the recipe. So that's where we build that association. So we don't have to do it outside of the class.
+    * It encapsulates the  logic which is exactly what we want*/
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Difficulty getDifficulty() {
@@ -154,6 +158,13 @@ public class Recipe {
 
     public Set<Ingredient> getIngredients() {
         return ingredients;
+    }
+
+    /*we go in and build the association for the bi-directional association here as well*/
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public void setIngredients(Set<Ingredient> ingredients) {
